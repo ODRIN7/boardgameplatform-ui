@@ -1,0 +1,49 @@
+<td-layout-nav logo="assets:covalent">
+  <md-card>
+    <md-card-content>
+      <h3 class="md-title">Data Table with components</h3>
+      <h4 class="md-subhead">Paging Bar / Search Box / Sortable components</h4>
+      <md-divider></md-divider>
+      <md-tab-group md-stretch-tabs>
+        <md-tab>
+          <template md-tab-label>Notifications</template>
+          <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm"
+               [class.md-selected-title]="selectedRows.length && selectable">
+          <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+            <span *ngIf="(selectable && !selectedRows.length) || !selectable" class="md-title">Title here</span>
+            <span *ngIf="selectedRows.length && selectable"
+                  class="md-body-1">{{selectedRows.length}} item(s) selected</span>
+          </span>
+            <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here"
+                           (searchDebounce)="search($event)" flex>
+            </td-search-box>
+            <button md-icon-button>
+              <md-icon>more_vert</md-icon>
+            </button>
+          </div>
+          <md-divider></md-divider>
+          <td-data-table
+            [data]="filteredData"
+            [columns]="columns"
+            [selectable]="selectable"
+            [multiple]="multiple"
+            [sortable]="true"
+            [sortBy]="sortBy"
+            [(ngModel)]="selectedRows"
+            [sortOrder]="sortOrder"
+            (sortChange)="sort($event)">
+          </td-data-table>
+          <td-paging-bar [pageSizes]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)"></td-paging-bar>
+        </md-tab>
+      </md-tab-group>
+    </md-card-content>
+    <md-divider></md-divider>
+    <md-card-actions>
+      <div layout="row" layout-align="end none">
+        <button flex md-raised-button color="warn" (click)="deleteElement()">
+          Delete
+        </button>
+      </div>
+    </md-card-actions>
+  </md-card>
+</td-layout-nav>

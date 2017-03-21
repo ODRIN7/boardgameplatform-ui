@@ -1,0 +1,42 @@
+<td-layout-nav logo="assets:covalent" xmlns="http://www.w3.org/1999/html">
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Quickstart</span>
+    <span flex></span>
+    <div [hidden]="authService.isAuthenticated()">
+      <a [routerLink]="['/signin']" md-icon-button mdTooltip="signIn">
+        <md-icon>account_circle</md-icon>
+      </a>
+      <a [routerLink]="['/signup']" md-icon-button mdTooltip="signUp">
+        <md-icon>people</md-icon>
+      </a>
+    </div>
+
+  </div>
+  <div class="md-content" flex md-scroll-y>
+    <div layout="column" layout-gt-sm="row" class="inset">
+      <div flex-gt-sm="60">
+        <div layout="column" class="cardStyle">
+          <bga-news></bga-news>
+        </div>
+
+        <bga-pageinformation></bga-pageinformation>
+        <bga-recentGames></bga-recentGames>
+      </div>
+      <div flex-gt-sm="40">
+        <bga-gameboard [routing]="'arena'"></bga-gameboard>
+        <!--<div  [hidden]="!authService.isAuthenticated()">-->
+        <div [hidden]="true">
+          <bga-friends></bga-friends>
+        </div>
+      </div>
+    </div>
+  </div>
+  <td-layout-footer>
+    <div layout="row" layout-align="start center">
+      <span class="md-caption">Copyright &copy; 2016 Teradata. All rights reserved</span>
+      <span flex></span>
+      <md-icon class="md-icon-ux" svgIcon="assets:teradata-ux"></md-icon>
+    </div>
+  </td-layout-footer>
+  <router-outlet></router-outlet>
+</td-layout-nav>

@@ -1,0 +1,23 @@
+<md-card>
+  <md-card-title>Friends online</md-card-title>
+  <md-card-subtitle>call him to play</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-list class="will-load alert-list">
+    <template tdLoading="alerts.load">
+      <template let-user let-last="last" ngFor [ngForOf]="users">
+        <md-list-item layout-align="row">
+          <md-icon md-list-avatar>person</md-icon>
+          <h3 md-line> {{user.username}} </h3>
+          <p md-line> {{user.email}} </p>
+        </md-list-item>
+        <md-divider *ngIf="!last" md-inset></md-divider>
+      </template>
+    </template>
+  </md-list>
+  <md-divider></md-divider>
+  <md-card-actions>
+    <a md-button color="accent" class="text-upper" [routerLink]="['/friends']">
+      <span>View More</span>
+    </a>
+  </md-card-actions>
+</md-card>

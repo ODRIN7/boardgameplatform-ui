@@ -1,0 +1,16 @@
+<md-card id="dashboard-favorites-card" class="push-top">
+  <md-card-title>Open Games</md-card-title>
+  <md-card-subtitle>Try to play with friends</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-nav-list class="will-load favorite-list">
+    <bga-opened-game-item *ngFor="let game of openGames; let i = index" [game]="game"
+                          [routing]="routing"></bga-opened-game-item>
+  </md-nav-list>
+  <md-divider></md-divider>
+  <md-card-actions>
+    <a md-button color="accent" class="text-upper" [routerLink]="['/games']">
+      <span>View More</span>
+    </a>
+  </md-card-actions>
+</md-card>
+

@@ -1,0 +1,39 @@
+<td-expansion-panel label="{{boardGame.id}}"
+                    sublabel="{{boardGame.name}}"
+                    [expand]="expansion1"
+                    [disabled]="disabled"
+                    (expanded)="expandExpansion1Event()"
+                    (collapsed)="collapseExpansion1Event()">
+  <td-expansion-summary>
+    <md-list>
+      <md-list-item>
+        <img md-list-avatar src="{{boardGame.icon}}"/>
+        <h3 md-line>{{boardGame.name}}</h3>
+        <h4 md-line>{{boardGame.id}}</h4>
+        <p md-line>
+          {{boardGame.name}}
+        </p>
+      </md-list-item>
+    </md-list>
+  </td-expansion-summary>
+  <div class="md-padding">
+    <p>
+      {{boardGame.name}}
+    </p>
+  </div>
+  <div layout="row" layout-align="end end">
+    <a (click)="deleteBoardGame()">
+     Wanna remove? <md-icon class="tc-light-blue-700">delete</md-icon>
+    </a>
+  </div>
+  <md-divider></md-divider>
+  <md-divider></md-divider>
+  <div layout="row" layout-margin layout-align="end center">
+    <button flex md-raised-button color="accent" (click)="onPlay(boardGame.id)">
+      Create new game!
+    </button>
+    <button flex md-raised-button color="primary" (click)="createNewGame(boardGame.id)">
+      Play!
+    </button>
+  </div>
+</td-expansion-panel>

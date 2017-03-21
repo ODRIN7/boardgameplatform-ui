@@ -1,0 +1,12 @@
+<div layout="row" layout-align="start center">
+  <a md-list-item [routerLink]="['/shopping']">
+    <img md-list-avatar src="{{boardGame.icon}}"/>
+    <h4 md-line><span class="text-wrap">{{boardGame.name}}</span></h4>
+  </a>
+  <a (click)="deleteShoppingList()">
+    <md-icon class="tc-light-blue-700">delete</md-icon>
+  </a>
+</div>
+
+
+<md-divider></md-divider>

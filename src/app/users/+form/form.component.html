@@ -1,0 +1,129 @@
+<td-layout-nav logo="assets:covalent">
+
+  <td-layout-manage-list #manageList
+                        [opened]="media.registerQuery('gt-sm') | async"
+                        [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'"
+                        [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '257px' : '100%'">
+    <md-toolbar td-sidenav-content>
+      <span>Users</span>
+    </md-toolbar>
+    <md-nav-list td-sidenav-content (click)="!media.query('gt-sm') && manageList.close()">
+      <a md-list-item  [routerLink]="['/users']">
+        <md-icon md-list-icon>account_circle</md-icon>
+        All Users
+      </a>
+    </md-nav-list>
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <span class="text-capital"></span>
+    </div>
+    <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+      <md-card-title>User Form</md-card-title>
+      <md-divider></md-divider>
+      <md-card-content class="push-bottom-none">
+        <form #userForm="ngForm">
+          <div layout="row">
+            <md-input-container flex>
+              <input md-input
+                      #displayNameElement
+                      #displayNameControl="ngModel"
+                      type="text"
+                      placeholder="Username"
+                      [(ngModel)]="user.username"
+                      name="Username"
+                      maxlength="20"
+                      required>
+              <md-hint align="start">
+                <span [hidden]="displayNameControl.pristine" class="tc-red-600">
+                  <span [hidden]="!displayNameControl.errors?.required">Required</span>
+                </span>
+              </md-hint>
+              <md-hint align="end"></md-hint>
+            </md-input-container>
+          </div>
+          <div layout="row" >
+            <md-input-container flex [hidden]="isEdited()">
+              <input md-input
+                      #displayNameElement
+                      #displayNameControl="ngModel"
+                      type="text"
+                      placeholder="Password"
+                      [(ngModel)]="user.password"
+                      name="password"
+                      maxlength="1000"
+                      required>
+              <md-hint align="start">
+                <span [hidden]="displayNameControl.pristine" class="tc-red-600">
+                  <span [hidden]="!displayNameControl.errors?.required">Required</span>
+                </span>
+              </md-hint>
+              <md-hint align="end"></md-hint>
+            </md-input-container>
+          </div>
+          <div layout="row" >
+            <md-input-container flex [hidden]="isEdited()">
+              <input md-input
+                      #displayNameElement
+                      #displayNameControl="ngModel"
+                      type="text"
+                      placeholder="Password Agian"
+                      [(ngModel)]="user.password"
+                      name="password"
+                      maxlength="1000"
+                      required>
+              <md-hint align="start">
+                <span [hidden]="displayNameControl.pristine" class="tc-red-600">
+                  <span [hidden]="!displayNameControl.errors?.required">Required</span>
+                </span>
+              </md-hint>
+              <md-hint align="end"></md-hint>
+            </md-input-container>
+          </div>
+          <div layout="row" class="push-top">
+            <md-input-container flex>
+              <input md-input
+                      #emailElement
+                      #emailControl="ngModel"
+                      type="text"
+                      placeholder="Email"
+                      [(ngModel)]="user.email"
+                      name="email"
+                      maxlength="30"
+                      pattern="^[a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,15})$"
+                      required>
+              <md-hint align="start">
+                <span [hidden]="emailControl.pristine" class="tc-red-600">
+                  <span [hidden]="!emailControl.errors?.required">Required</span>
+                  <span [hidden]="!emailControl.errors?.pattern">incorrect pattern</span>
+                </span>
+              </md-hint>
+              <md-hint align="end"></md-hint>
+            </md-input-container>
+          </div>
+          <div layout="row">
+            Choose Icon:
+          </div>
+          <div layout="row">
+            <td-file-upload #singleFileUpload (select)="selectEvent($event)" (upload)="uploadEvent($event)"
+                            [disabled]="false">
+              <md-icon>file_upload</md-icon>
+              <span>{{ singleFileUpload.files?.name }}</span>
+              <template td-file-input-label>
+                <md-icon>attach_file</md-icon>
+                <span>Choose a file...</span>
+              </template>
+            </td-file-upload>
+          </div>
+          <br/>
+          <div layout="row">
+            <md-slide-toggle [(ngModel)]="admin" name="admin">Admin</md-slide-toggle>
+          </div>
+        </form>
+      </md-card-content>
+      <md-divider></md-divider>
+      <md-card-actions>
+        <button md-button [disabled]="!userForm.form.valid" color="primary" (click)="save()">SAVE</button>
+        <button md-button (click)="goBack()">CANCEL</button>
+      </md-card-actions>
+    </md-card>
+  </td-layout-manage-list>
+</td-layout-nav>

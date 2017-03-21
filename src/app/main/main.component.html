@@ -1,0 +1,22 @@
+<td-layout #layout>
+  <td-navigation-drawer logo="assets:covalent" sidenavTitle="BoardGameArena" name="Firstname Lastname"
+                        email="firstname.lastname@company.com">
+    <md-nav-list>
+      <template let-item let-last="last" ngFor [ngForOf]="views">
+        <a (click)="authService.refreshToken()">
+          <a md-list-item [routerLink]="[item.link]"
+             (click)="layout.close()"
+             [hidden]="!authService.canView(item)">>
+            <md-icon>{{item.icon}}</md-icon>
+            {{item.title}}</a>
+        </a>
+      </template>
+    </md-nav-list>
+    <md-nav-list td-navigation-drawer-menu>
+      <a md-list-item (click)="logout()">
+        <md-icon>exit_to_app</md-icon>
+        Sign out</a>
+    </md-nav-list>
+  </td-navigation-drawer>
+  <router-outlet></router-outlet>
+</td-layout>

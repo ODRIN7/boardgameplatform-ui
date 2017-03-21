@@ -1,0 +1,85 @@
+<td-layout-nav logo="assets:covalent">
+  <div td-toolbar-content layout="row" layout-align="start center" flex>
+    <span flex></span>
+    <button md-icon-button [mdMenuTriggerFor]="notificationsMenu">
+      <td-notification-count color="accent" [notifications]="shoppingCard.length">
+        <md-icon>shopping_cart</md-icon>
+      </td-notification-count>
+    </button>
+    <md-menu #notificationsMenu="mdMenu">
+      <td-menu>
+        <div td-menu-header class="md-subhead">Templates</div>
+        <md-nav-list dense>
+          <bga-card-item *ngFor="let shopping of shoppingCard; let i = index" [shopping]="shopping"
+                         [shoppingId]="i"></bga-card-item>
+        </md-nav-list>
+      </td-menu>
+    </md-menu>
+  </div>
+
+  <td-layout-manage-list #manageList>
+    <md-toolbar td-sidenav-content>
+      <span>BoardGames</span>
+    </md-toolbar>
+    <md-nav-list td-sidenav-content (click)="!media.query('gt-sm') && manageList.close()">
+      <a md-list-item (click)="filterBoardGamesByType('')">
+        <md-icon md-list-icon>account_circle</md-icon>
+        All BoardGames
+      </a>
+      <a md-list-item (click)="filterBoardGamesByType('')">
+        <md-icon md-list-icon>star</md-icon>
+        Favorites
+      </a>
+      <a md-list-item *ngFor="let boardGameType of allBoardGameTypes" (click)="filterBoardGamesByType(boardGameType)">
+        <md-icon md-list-icon>inbox</md-icon>
+        {{boardGameType}}
+      </a>
+    </md-nav-list>
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <span flex></span>
+    </div>
+    <div class="md-content">
+
+    </div>
+    <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+      <td-search-box class="push-left push-right" placeholder="search" [alwaysVisible]="true"
+                     (searchDebounce)="filterBoardGames($event)"></td-search-box>
+      <md-divider></md-divider>
+      <template tdLoading="boardGames.list">
+        <md-list class="will-load">
+          <div class="md-padding" *ngIf="!filteredBoardGames || filteredBoardGames.length === 0" layout="row"
+               layout-align="center center">
+            <h3>No boardgames to display.</h3>
+          </div>
+          <template let-boardgame let-last="last" ngFor [ngForOf]="filteredBoardGames">
+            <md-list-item>
+              <img md-list-avatar src="{{boardgame.icon}}" [routerLink]="[boardgame.id]"/>
+              <h3 md-line > {{boardgame.name}} </h3>
+              <h3 md-line>
+                <div style="color: blue;">
+                  <template let-itemType let-last="last" ngFor [ngForOf]="boardgame.typeOfBoardGames">
+                    #{{itemType}}
+                  </template>
+                </div>
+              </h3>
+              <span flex></span>
+              <span>
+                <div layout="row" layout-align="end none">
+                  <button md-mini-fab color="accent" (click)="addToCards(boardgame.id)">
+                    <md-icon>add</md-icon>
+                  </button>
+              </div>
+              </span>
+            </md-list-item>
+            <md-divider *ngIf="!last" md-inset></md-divider>
+          </template>
+        </md-list>
+      </template>
+      <md-divider></md-divider>
+      <md-card-actions>
+        <button md-button class="md-primary" (click)="goBack()">BACK</button>
+      </md-card-actions>
+    </md-card>
+  </td-layout-manage-list>
+  <router-outlet></router-outlet>
+</td-layout-nav>

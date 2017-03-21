@@ -1,0 +1,113 @@
+<div layout="column" layout-fill>
+  <md-toolbar color="primary" class="md-whiteframe-z1">
+    <a md-icon-button mdTooltip="Back" (click)="goBack()">
+      <md-icon>arrow_back</md-icon>
+      <span>Back</span>
+    </a>
+  </md-toolbar>
+  <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+    <md-card-title>New Account</md-card-title>
+    <md-divider></md-divider>
+    <md-card-content class="push-bottom-none">
+      <form #userForm="ngForm">
+        <div layout="row">
+          <md-input-container flex>
+            <input md-input
+                   #displayNameElement
+                   #displayNameControl="ngModel"
+                   type="text"
+                   placeholder="Username"
+                   [(ngModel)]="username"
+                   name="Username"
+                   maxlength="20"
+                   required>
+            <md-hint align="start">
+                <span [hidden]="displayNameControl.pristine" class="tc-red-600">
+                  <span [hidden]="!displayNameControl.errors?.required">Required</span>
+                </span>
+            </md-hint>
+            <md-hint align="end">{{displayNameElement.value.length}} / 20</md-hint>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <input md-input
+                   #displayNameElement
+                   #displayNameControl="ngModel"
+                   type="password"
+                   placeholder="Password1"
+                   [(ngModel)]="password1"
+                   name="Password"
+                   maxlength="20"
+                   required>
+            <md-hint align="start">
+                <span [hidden]="displayNameControl.pristine" class="tc-red-600">
+                  <span [hidden]="!displayNameControl.errors?.required">Required</span>
+                </span>
+            </md-hint>
+            <md-hint align="end">{{displayNameElement.value.length}} / 20</md-hint>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <input md-input
+                   #displayNameElement
+                   #displayNameControl="ngModel"
+                   type="password"
+                   placeholder="Password2"
+                   [(ngModel)]="password2"
+                   name="Password"
+                   maxlength="20"
+                   required>
+            <md-hint align="start">
+                <span [hidden]="displayNameControl.pristine" class="tc-red-600">
+                  <span [hidden]="!displayNameControl.errors?.required">Required</span>
+                </span>
+            </md-hint>
+            <md-hint align="end">{{displayNameElement.value.length}} / 20</md-hint>
+          </md-input-container>
+        </div>
+        <div layout="row" class="push-top">
+          <md-input-container flex>
+            <input md-input
+                   #emailElement
+                   #emailControl="ngModel"
+                   type="text"
+                   placeholder="Email"
+                   [(ngModel)]="email"
+                   name="email"
+                   maxlength="30"
+                   pattern="^[a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,15})$"
+                   required>
+            <md-hint align="start">
+                <span [hidden]="emailControl.pristine" class="tc-red-600">
+                  <span [hidden]="!emailControl.errors?.required">Required</span>
+                  <span [hidden]="!emailControl.errors?.pattern">incorrect pattern</span>
+                </span>
+            </md-hint>
+            <md-hint align="end">{{emailElement.value.length}} / 30</md-hint>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          Choose Icon:
+        </div>
+        <div layout="row">
+          <td-file-upload #singleFileUpload (select)="selectEvent($event)" (upload)="uploadEvent($event)"
+                          [disabled]="false">
+            <md-icon>file_upload</md-icon>
+            <span>{{ singleFileUpload.files?.name }}</span>
+            <template td-file-input-label>
+              <md-icon>attach_file</md-icon>
+              <span>Choose a file...</span>
+            </template>
+          </td-file-upload>
+        </div>
+      </form>
+    </md-card-content>
+    <md-divider></md-divider>
+    <md-card-actions>
+      <button md-button [disabled]="!userForm.form.valid" color="primary" (click)="onSignUp()">Sign Up</button>
+      <button md-button (click)="goBack()">CANCEL</button>
+    </md-card-actions>
+  </md-card>
+</div>
