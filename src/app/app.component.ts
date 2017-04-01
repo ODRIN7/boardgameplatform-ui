@@ -23,6 +23,10 @@ export class BGAMyAppComponent implements OnInit {
       this._domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/github.svg'));
     this._iconRegistry.addSvgIconInNamespace('assets', 'covalent',
       this._domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/covalent.svg'));
+    this._iconRegistry.addSvgIconInNamespace('assets', 'logo',
+      this._domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/logo.svg'));
+    this._iconRegistry.addSvgIconInNamespace('assets', 'logo2',
+      this._domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/logo2.svg'));
     this._iconRegistry.addSvgIconInNamespace('assets', 'covalent-mark',
       this._domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/covalent-mark.svg'));
     this._iconRegistry.addSvgIconInNamespace('assets', 'teradata-ux',

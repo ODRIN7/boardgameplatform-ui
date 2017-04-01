@@ -31,12 +31,6 @@ export const MAIN_MENU: AppMenuItem[] = [
     icon: 'people',
     link: '/boardgames',
     roles: [Role.ADMIN_ROLE],
-  },
-  {
-    title: 'Notifications',
-    icon: 'people',
-    link: '/notifications',
-    roles: [Role.ADMIN_ROLE],
   }
 ];
 
