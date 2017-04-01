@@ -357,7 +357,7 @@ export class ShoppingComponent implements OnInit, OnChanges {
   columns: ITdDataTableColumn[] = [
     {name: 'shopping.id', label: 'Id'},
     {name: 'boardGame.name', label: 'Name'},
-    {name: 'boardGame.shortDescription', label: 'Full Name'},
+    {name: 'boardGame.name', label: 'Full Name'},
     {name: 'boardGame.typeOfBoardGames', label: 'Type'},
     {name: 'boardGame.maxplayer', label: 'Min Player'},
     {name: 'boardGame.minplayer', label: 'Max Player'},

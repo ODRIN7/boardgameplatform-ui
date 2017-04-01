@@ -21,7 +21,7 @@
       <span class="text-capital"></span>
     </div>
     <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-      <md-card-title>BoardGame Form</md-card-title>
+      <md-card-title>BoardGame Editor</md-card-title>
       <md-divider></md-divider>
       <md-card-content class="push-top">
         <form #userForm="ngForm">
@@ -66,8 +66,8 @@
                      #displayNameControl="ngModel"
                      type="text"
                      placeholder="Fullname"
-                     [(ngModel)]="boardGame.shortDescription"
-                     name="shortDescription"
+                     [(ngModel)]="boardGame.name"
+                     name="name"
                      maxlength="20"
                      required>
               <md-hint align="start">

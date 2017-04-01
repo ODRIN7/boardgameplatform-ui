@@ -9,7 +9,6 @@
   <div class="messages"
        [ngClass]="{'msg-sent': !incoming, 'msg-receive': incoming}">
     <p>{{message.content}}</p>
-    <p class="time" md-line>createdDate: {{message.timestamp | date:"dd.MM.yyyy HH:mm"}}</p>
   </div>
 
   <div class="avatar"

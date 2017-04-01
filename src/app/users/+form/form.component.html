@@ -17,7 +17,7 @@
       <span class="text-capital"></span>
     </div>
     <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-      <md-card-title>User Form</md-card-title>
+      <md-card-title>User Editor</md-card-title>
       <md-divider></md-divider>
       <md-card-content class="push-bottom-none">
         <form #userForm="ngForm">
@@ -116,6 +116,9 @@
           <br/>
           <div layout="row">
             <md-slide-toggle [(ngModel)]="admin" name="admin">Admin</md-slide-toggle>
+          </div>
+          <div layout="row">
+            <md-slide-toggle >Developer</md-slide-toggle>
           </div>
         </form>
       </md-card-content>

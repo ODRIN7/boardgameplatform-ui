@@ -1,4 +1,4 @@
-<td-expansion-panel label="{{boardGame.id}}"
+<td-expansion-panel label="{{boardGame.name}}"
                     sublabel="{{boardGame.name}}"
                     [expand]="expansion1"
                     [disabled]="disabled"
@@ -9,16 +9,12 @@
       <md-list-item>
         <img md-list-avatar src="{{boardGame.icon}}"/>
         <h3 md-line>{{boardGame.name}}</h3>
-        <h4 md-line>{{boardGame.id}}</h4>
-        <p md-line>
-          {{boardGame.name}}
-        </p>
       </md-list-item>
     </md-list>
   </td-expansion-summary>
   <div class="md-padding">
     <p>
-      {{boardGame.name}}
+      {{boardGame.shortDescription}}
     </p>
   </div>
   <div layout="row" layout-align="end end">
